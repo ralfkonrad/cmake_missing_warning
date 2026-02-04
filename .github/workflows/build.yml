@@ -53,5 +53,5 @@ jobs:
         shell: bash
         run: |
           cmake --version
-          cmake --preset release -G ${{ matrix.generator }} -L
+          cmake --preset release -G "${{ matrix.generator }}" -L
           cmake --build --preset release -v
