@@ -1,5 +1,9 @@
-#include <iostream>
+#pragma push_macro("BOOST_DISABLE_ASSERTS")
+#ifndef BOOST_DISABLE_ASSERTS
+#define BOOST_DISABLE_ASSERTS
+#endif
 #include <boost/multi_array.hpp>
+#pragma pop_macro("BOOST_DISABLE_ASSERTS")
 
 int main()
 {

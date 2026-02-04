@@ -35,12 +35,15 @@ jobs:
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew update
           brew install boost cmake
+          
+          echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
 
       - name: Setup macOs
         if: runner.os == 'macOs'
         shell: bash
         run: |
           brew update
+          brew upgrade cmake
           brew install boost ninja
 
       - name: compile
