@@ -1,0 +1,51 @@
+name: Build for different runners
+
+on:
+  push: { }
+  pull_request: { }
+  workflow_dispatch: { }
+
+jobs:
+  build-native:
+    name: Build on ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-22.04
+          - ubuntu-24.04
+          - macos-14
+          - macos-15
+          - macos-15-intel
+          - macos-26
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Linux
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build
+          sudo apt-get remove -y cmake
+          
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          brew update
+          brew install boost cmake
+
+      - name: Setup macOs
+        if: runner.os == 'macOs'
+        shell: bash
+        run: |
+          brew update
+          brew install boost ninja
+
+      - name: compile
+        shell: bash
+        run: |
+          cmake --version
+          cmake --preset release -L
+          cmake --build --preset release -v

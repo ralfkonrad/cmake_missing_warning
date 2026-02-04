@@ -29,4 +29,5 @@ endif()
 
 unset(_ql_mvn_cmp0167)
 
-add_executable(hello_world main.cpp)
+add_executable(main main.cpp)
+target_include_directories(main SYSTEM PUBLIC ${Boost_INCLUDE_DIRS})
