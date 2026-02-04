@@ -10,9 +10,6 @@
       "name": "default",
       "binaryDir": "${sourceDir}/build/${presetName}",
       "generator": "Ninja",
-      "cacheVariables": {
-        "CMAKE_COMPILE_WARNING_AS_ERROR": "ON"
-      },
       "hidden": true
     },
     {

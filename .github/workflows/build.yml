@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-native:
-    name: OS "${{ matrix.os }}" with "${{ matrix.generator }}"
+    name: ${{ matrix.os }} -- ${{ matrix.generator }}
     strategy:
       fail-fast: false
       matrix:
@@ -21,7 +21,7 @@ jobs:
           - ubuntu-24.04
         generator:
           - Ninja
-          - "Unix Makefiles"
+          - Unix Makefiles
 
     runs-on: ${{ matrix.os }}
 
