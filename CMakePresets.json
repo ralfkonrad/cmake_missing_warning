@@ -9,7 +9,7 @@
     {
       "name": "default",
       "binaryDir": "${sourceDir}/build/${presetName}",
-      "generator": "make",
+      "generator": "Unix Makefiles",
       "cacheVariables": {
         "CMAKE_COMPILE_WARNING_AS_ERROR": "ON"
       },
