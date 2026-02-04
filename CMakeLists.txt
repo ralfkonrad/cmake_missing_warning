@@ -1,13 +1,5 @@
 cmake_minimum_required(VERSION 4.0)
 
-## Target specific architectures for macOS and iOS, enable dual builds both for arm64 and amd64 architectures
-## According to the documentation:
-##   The value of this variable should be set prior to the first project() or enable_language() command
-##   invocation because it may influence configuration of the toolchain and flags
-#if (APPLE AND NOT DEFINED CMAKE_OSX_ARCHITECTURES)
-#    set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "Target architectures for Apple platforms" FORCE)
-#endif()
-
 project(cmake_missing_warning VERSION 0.0.1 LANGUAGES CXX)
 
 set(RKE_BOOST_VERSION "1.90.0" CACHE STRING "Boost version we want to use to ensure compatibility")

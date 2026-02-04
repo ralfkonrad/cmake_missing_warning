@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-native:
-    name: Build on ${{ matrix.os }}
+    name: Build on ${{ matrix.os }}, generator ${{ matrix.generator }}
     strategy:
       fail-fast: false
       matrix:
@@ -19,6 +19,9 @@ jobs:
           - macos-15
           - macos-15-intel
           - macos-26
+        generator:
+          - Ninja
+          - "Unix Makefiles"
 
     runs-on: ${{ matrix.os }}
 
@@ -31,7 +34,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ninja-build
-          sudo apt-get remove -y cmake
           
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew update
@@ -45,11 +47,11 @@ jobs:
         run: |
           brew update
           brew upgrade cmake
-          brew install boost ninja
+          brew install boost
 
       - name: compile
         shell: bash
         run: |
           cmake --version
-          cmake --preset release -L
+          cmake --preset release -G ${{ matrix.generator }} -L
           cmake --build --preset release -v
