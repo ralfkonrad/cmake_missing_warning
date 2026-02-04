@@ -9,16 +9,16 @@ on:
 
 jobs:
   build-native:
-    name: Build on ${{ matrix.os }}, generator ${{ matrix.generator }}
+    name: OS "${{ matrix.os }}" with "${{ matrix.generator }}"
     strategy:
       fail-fast: false
       matrix:
         os:
-          - ubuntu-22.04
-          - ubuntu-24.04
           - macos-15
           - macos-15-intel
           - macos-26
+          - ubuntu-22.04
+          - ubuntu-24.04
         generator:
           - Ninja
           - "Unix Makefiles"
