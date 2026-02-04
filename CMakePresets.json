@@ -9,7 +9,7 @@
     {
       "name": "default",
       "binaryDir": "${sourceDir}/build/${presetName}",
-      "generator": "Ninja",
+      "generator": "make",
       "cacheVariables": {
         "CMAKE_COMPILE_WARNING_AS_ERROR": "ON"
       },
