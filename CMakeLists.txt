@@ -16,11 +16,11 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "
     add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+find_package(Boost 1.90.0 EXACT CONFIG REQUIRED)
+
 if (APPLE)
     add_compile_options(-isystem ${Boost_INCLUDE_DIRS})
 endif()
-
-find_package(Boost 1.90.0 EXACT CONFIG REQUIRED)
 
 add_executable(cmake_missing_warning main.cpp)
 target_include_directories(cmake_missing_warning SYSTEM PUBLIC ${Boost_INCLUDE_DIRS})
